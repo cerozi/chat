@@ -6,6 +6,9 @@ class Client:
         self.socket = socket
         self.nickname = nickname
 
+    def get_nickname(self) -> str:
+        return self.nickname
+
     def has_nickname(self) -> bool:
         return bool(self.nickname)
 

@@ -51,20 +51,22 @@ class ChatServer:
                 client.socket.sendall(msg)
 
     def __client_handler(self, client: Client) -> None:
+
+        data = client.socket.recv(1024)
+        client.set_nickname(data.decode(ChatSocket.ENCODING))
+        self.__messages.put(f"{client.get_nickname()} entrou no chat!")
         
         while (True):
 
             data = client.socket.recv(1024)
 
-            if not client.has_nickname():
-                client.set_nickname(data.decode(ChatSocket.ENCODING))
-                data = f"{client.nickname} entrou no chat!"
-
             if not data:
-                self.__clients.remove(client)
-                data = f"{client.nickname} saiu do chat!"
 
-            self.__messages.put(data)
+                if client in self.__clients: self.__clients.remove(client)
+                self.__messages.put(f"{client.get_nickname()} saiu do chat!")
+                continue
+
+            self.__messages.put(f"{client.get_nickname()}: {data.decode(ChatSocket.ENCODING)}")
 
     def start(self) -> None:
 
