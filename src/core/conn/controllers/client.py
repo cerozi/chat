@@ -24,7 +24,7 @@ class ChatClient:
 
         nickname = input("Nickname: ")
         self.__socket.sendall(nickname)
-        
+
         while (True):
             data = input()
             self.__socket.sendall(data)

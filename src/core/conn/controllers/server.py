@@ -64,7 +64,7 @@ class ChatServer:
 
                 if client in self.__clients: self.__clients.remove(client)
                 self.__messages.put(f"{client.get_nickname()} saiu do chat!")
-                continue
+                break
 
             self.__messages.put(f"{client.get_nickname()}: {data.decode(ChatSocket.ENCODING)}")
 
