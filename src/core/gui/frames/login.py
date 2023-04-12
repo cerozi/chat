@@ -1,11 +1,8 @@
 import customtkinter
 
-class LoginFrame(customtkinter.CTkFrame):
+from src.core.gui.frames.interface.base_frame import IBaseFrame
 
-    def __init__(self, master, *args, **kwargs) -> None:
-        
-        super().__init__(master, *args, **kwargs)
-        self.master = master
+class LoginFrame(IBaseFrame):
 
     def init_widgets(self) -> None:
 

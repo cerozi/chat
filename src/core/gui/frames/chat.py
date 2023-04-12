@@ -1,11 +1,8 @@
 import customtkinter
 
-class ChatFrame(customtkinter.CTkFrame):
-    
-    def __init__(self, master, *args, **kwargs) -> None:
-        
-        super().__init__(master, *args, **kwargs)
-        self.master = master
+from src.core.gui.frames.interface.base_frame import IBaseFrame
+
+class ChatFrame(IBaseFrame):
 
     def init_widgets(self) -> None:
 
