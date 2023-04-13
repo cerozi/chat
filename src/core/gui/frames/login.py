@@ -1,6 +1,6 @@
 import customtkinter
 
-from src.core.gui.frames.interface.base_frame import IBaseFrame
+from core.gui.frames.interface.base_frame import IBaseFrame
 
 class LoginFrame(IBaseFrame):
 
