@@ -7,7 +7,7 @@ from typing import Tuple
 from core.conn.models.schema import Client
 from core.conn.chat_socket import ChatSocket
 
-class ChatServer:
+class ServerConnection:
 
     def __init__(self, addr: Tuple[str, int]) -> None:
 

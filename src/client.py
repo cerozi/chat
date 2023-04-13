@@ -1,6 +1,10 @@
-from core.conn.controllers.client import ChatClient
+import customtkinter
 
-with ChatClient(('127.0.0.1', 6666)) as client:
+from core.conn.controllers.client import ClientConnection
+from core.gui.app import ChatGUI
 
-    client.connect()
-    client.start_communication()
+customtkinter.set_appearance_mode("dark")
+customtkinter.set_default_color_theme("green")
+
+app = ChatGUI(ClientConnection(("127.0.0.1", 6666)))
+app.mainloop()
