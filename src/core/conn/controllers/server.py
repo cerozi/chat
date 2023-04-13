@@ -52,7 +52,11 @@ class ServerConnection:
 
     def __client_handler(self, client: Client) -> None:
 
-        data = client.socket.recv(1024)
+        try:
+            data = client.socket.recv(1024)
+        except ConnectionResetError:
+            return -1
+
         client.set_nickname(data.decode(ChatSocket.ENCODING))
         self.__messages.put(f"{client.get_nickname()} entrou no chat!")
         
